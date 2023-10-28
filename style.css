@@ -1,0 +1,204 @@
+/* Define color variables */
+:root {
+    --main-bg-color: rgba(221, 160, 221, 0);
+    --container-border-color: rgba(255, 255, 255, 0);
+    --box-shadow-color: white;
+    --playlist-border-color: rgba(255, 255, 255, 0);
+    --playlist-item-bg: rgba(255, 255, 255, 0.103);
+    --playlist-item-hover-shadow: 0 0 5px black;
+    --active-bg-color: rgb(0, 0, 0);
+    --active-text-color: white;
+    --lower-bg-color: rgba(165, 42, 42, 0);
+    --progress-bg-color: rgba(255, 0, 0, 0);
+    --progress-bar-bg-color: rgba(0, 0, 255, 0);
+    --slider-scale-bg-color: green;
+    --slider-bar-border: 1px solid white;
+    --slider-circle-bg-color: black;
+    --slider-circle-border-radius: 50%;
+    --play-controls-bg-color: rgba(255, 255, 0, 0);
+    --play-controls-btn-bg: plum;
+    --play-controls-btn-border: 1px solid white;
+    --play-controls-btn-box-shadow: 0 0 5px;
+  }
+  
+  /* All colors replaced with variables */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  html,
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .back{
+    width: 100vw;
+    height: 100vh;
+  }
+  .back img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--main-bg-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    /* border-left: 2px solid var(--container-border-color); */
+    height: 95%;
+    width: 80%;
+    /* box-shadow: 0 0 5px var(--box-shadow-color); */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .upper {
+    width: 100%;
+    height: 85%;
+    background-color: var(--main-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .upper .section {
+    width: 80%;
+    height: 90%;
+    border: 2px solid var(--container-border-color);
+  }
+  
+  .playlist {
+    /* display: none; */
+    border: 2px solid var(--playlist-border-color);
+    width: 90%;
+    overflow: auto;
+    height: 95%;
+    box-shadow: inset 0px -10px 10px -1px rgba(129, 4, 157, 0.671);
+  }
+  
+  .playlist li {
+    width: 100%;
+    padding-left: 15px;
+    font-size: 25px;
+    list-style: none;
+    cursor: pointer;
+    background-color: var(--playlist-item-bg);
+    margin-bottom: 5px;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .playlist li:hover {
+    box-shadow: var(--playlist-item-hover-shadow);
+  }
+  
+  .active {
+    background-color: var(--active-bg-color);
+    color: var(--active-text-color);
+  }
+  
+  .lower {
+    width: 100%;
+    height: 15%;
+    background-color: var(--lower-bg-color);
+    display: flex;
+    flex-direction: column;
+    /* gap: 3px; */
+    /* justify-content: flex-end; */
+  }
+  
+  .controles {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background-color: var(--progress-bg-color);
+  }
+  
+  .progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 46%;
+    transform: translate(-50%, -50%);
+    background-color: var(--progress-bar-bg-color);
+    width: 90%;
+    cursor: pointer;
+    border: 1px solid white;
+  }
+  
+  .current-time {
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .slider-scale {
+    width: 0%;
+    height: 10px;
+    background-color: var(--slider-scale-bg-color);
+    border: var(--slider-bar-border);
+    transition: width 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .slider-circle {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--slider-circle-bg-color);
+    border-radius: var(--slider-circle-border-radius);
+    transition: left 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .play-controls {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--play-controls-bg-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .play-controls-btn {
+    width: 50px;
+    height: 50px;
+    background-color: var(--play-controls-btn-bg);
+    border-radius: 50%;
+    border: var(--play-controls-btn-border);
+    box-shadow: var(--play-controls-btn-box-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .pre-song {}
+  
+  .next-song {}
+  
+  .play-controls-btn:hover {
+    box-shadow: none;
+  }
+  

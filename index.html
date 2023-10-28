@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./p1.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+    
+    <link rel="stylesheet" href="style.css">
+
+    <title>music</title>
+</head>
+
+<body>
+    <div id="back">
+        <img class="imgs" src="./pictures/parrate.jpg" alt="">
+        <img class="imgs" src="./pictures/pic_0.jpg" alt="">
+        <img class="imgs" src="./pictures/pic_1.jpg" alt="">
+        <img class="imgs" src="./pictures/pic_2.jpg" alt="">
+        <img class="imgs" src="./pictures/pic_3.jpg" alt="">
+        <img class="imgs" src="./pictures/swan.jpg" alt="">
+    </div>
+    <div class="top">
+        <audio class="audio-player">
+            <source src="./songs/Aaja Shaam Hone Aayee.mp3" type="audio/mpeg">
+        </audio>
+        <div class="container">
+            <div class="upper" style="display: none;">
+                <div class="section"></div>
+            </div>
+            <div class="upper playlistDisplay">
+                <ul class="playlist">
+                    <li data-src="./songs/Ijazat.mp3">Ijazat</li>
+                    <li data-src="./songs/Aaja Shaam Hone Aayee.mp3">Aaja Shaam Hone Aayee</li>
+                    <li data-src="./songs/Carol-of-the-Bells.mp3">Carol-of-the-Bells</li>
+                    <li data-src="./songs/Chal Tere Ishq Mein.mp3">Chal Tere Ishq Mein</li>
+                    <li data-src="./songs/Chand Sifarish.mp3">Chand Sifarish</li>
+                    <li data-src="./songs/Dil-Meri-Na-Sune.mp3">Dil-Meri-Na-Sune</li>
+                    <li data-src="./songs/Ek-Mulaqat.mp3">Ek-Mulaqat</li>
+                    <li data-src="./songs/Jaan Ban Gaye.mp3">Jaan Ban Gaye</li>
+                    <li data-src="./songs/Keh Doon Tumhe Ya Chup.mp3">Keh Doon Tumhe Ya Chup</li>
+                    <li data-src="./songs/Kitabein Bahut Si.mp3">Kitabein Bahut Si</li>
+                    <li data-src="./songs/Ladki Badi Anjaani Hai.mp3">Ladki Badi Anjaani Hai</li>
+                    <li data-src="./songs/Maa Da Laadla.mp3">Maa Da Laadla</li>
+                    <li data-src="./songs/Mere Liye.mp3">Mere Liye</li>
+                    <li data-src="./songs/Phir-Bhi-Tumko.mp3">Phir-Bhi-Tumko</li>
+                    <li data-src="./songs/Phool Tumhe Bheja.mp3">Phool Tumhe Bheja</li>
+                    <li data-src="./songs/Roke Na Ruke Naina.mp3">Roke Na Ruke Naina</li>
+                    <li data-src="./songs/Saathiya Tune Kya Kiya.mp3">Saathiya Tune Kya Kiya</li>
+                    <li data-src="./songs/Sapna Jahan.mp3">Sapna Jahan</li>
+                    <li data-src="./songs/Tera-Fitoor.mp3">Tera-Fitoor</li>
+                    <li data-src="./songs/thoda-thoda.mp3">thoda-thoda</li>
+                    <li data-src="./songs/Tumsa-Koi-Pyara.mp3">Tumsa-Koi-Pyara</li>
+                    <li data-src="./songs/Ye-Raatein-Ye-Mausam.mp3">Ye-Raatein-Ye-Mausam</li>
+                </ul>
+            </div>
+            <div class="lower">
+                <div class="controles">
+                    <div class="cant">
+                        <div class="progress-bar">
+                            <div class="slider-scale"></div>
+                            <div class="slider-circle"></div>
+                        </div>
+                    </div>
+                    <div class="current-time"></div>
+                </div>
+                <div class="play-controls">
+                    <div class="mode play-controls-btn">
+                        <i class="fa-solid fa-person-walking-arrow-loop-left"></i>
+                    </div>
+                    <div class="pre-song play-controls-btn">
+                        <i class="fa-solid fa-forward fa-rotate-180"></i>
+                    </div>
+                    <div class="play-pause-btn play-controls-btn">
+                        <i class="fa-solid fa-play fa-2xl" ></i>
+                    </div>
+                    <div class="next-song play-controls-btn">
+                        <i class="fa-solid fa-forward fa-rotate-0"></i>
+                    </div>
+                    <div class="playlist-btn play-controls-btn">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div class="current-time"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+
+
+<!--  Gsap is needed for Basic Effects -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Scroll Trigger is needed for Scroll Effects -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Three.js is needed for 3d Effects -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+
+<!-- ControlKit is needed for Debug Panel -->
+<script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+
+<script  type="text/javascript"  src="https://unpkg.com/sheryjs/dist/Shery.js"></script>
+
+<script src="https://kit.fontawesome.com/da68fb1077.js" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+
+</html>
