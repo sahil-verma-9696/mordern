@@ -1,34 +1,150 @@
 Shery.imageEffect("#back", {
-   
-  });
+    style: 5,
+    gooey: true,
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const lyricsData = {
+    "Aadat": {
+        lyrics: [
+            {
+                time: "00:00",
+                text: "Kaise bataaye, kaise jataaye"
+            },
+            {
+                time: "00:09",
+                text: "Subah tak tujhme jeena chahein"
+            },
+            {
+                time: "00:19",
+                text: "Bheege labon ki, geeli hansi ko"
+            },
+            {
+                time: "00:26",
+                text: "Peene ka mausam hai peena chahein"
+            },
+            {
+                time: "00:35",
+                text: "Ik baat kahoon kya ijazat hai"
+            },
+            {
+                time: "00:45",
+                text: "Tere ishq ki mujhko aadat hai"
+            },
+            {
+                time: "00:53",
+                text: "Ik baat kahoon kya ijazat hai"
+            },
+            {
+                time: "01:02",
+                text: "Tere ishq ki mujhko.."
+            },
+            {
+                time: "01:11",
+                text: "Aadat hai o.. aadat hai.."
+            },
+            {
+                time: "01:20",
+                text: "Aadat hai o.. aadat hai.."
+            },
+            {
+                time: "01:29",
+                text: "Ehsaas tere aur mere toh"
+            },
+            {
+                time: "01:38",
+                text: "Ik dooje se judd rahe"
+            },
+            {
+                time: "01:45",
+                text: "Ik teri talab mujhe aisi lagi"
+            },
+            {
+                time: "01:52",
+                text: "Mere hosh bhi udne lage"
+            },
+            {
+                time: "02:00",
+                text: "Mujhe milta sukoon teri baahon mein"
+            },
+            {
+                time: "02:09",
+                text: "Jannat jaisi ek raahat hai"
+            },
+            {
+                time: "02:18",
+                text: "Ik baat kahoon kya ijazat hai"
+            },
+            {
+                time: "02:27",
+                text: "Tere ishq ki mujhko aadat hai"
+            },
+            {
+                time: "02:35",
+                text: "Ik baat kahoon kya ijazat hai"
+            },
+            {
+                time: "02:44",
+                text: "Tere ishq ki mujhko.."
+            },
+            {
+                time: "02:53",
+                text: "Aadat hai o.. aadat hai.."
+            },
+            {
+                time: "03:02",
+                text: "Aadat hai o.. aadat hai.."
+            },
+            {
+                time: "03:11",
+                text: "Kyun sabse juda, kyun sabse alag"
+            },
+            {
+                time: "03:20",
+                text: "Andaaz tere lagte.."
+            },
+            {
+                time: "03:27",
+                text: "Besaakh ta hum saaye se tere"
+            },
+            {
+                time: "03:34",
+                text: "Har shaam lipat’te hain"
+            },
+            {
+                time: "03:42",
+                text: "Har waqt mera, qurbat mein teri"
+            },
+            {
+                time: "03:51",
+                text: "Jab guzre toh ibadat hai"
+            },
+            {
+                time: "03:59",
+                text: "Ik baat kahoon kya ijazat hai"
+            },
+            {
+                time: "04:08",
+                text: "Tere ishq ki mujhko aadat hai"
+            },
+            {
+                time: "04:16",
+                text: "Ik baat kahoon kya ijazat hai"
+            },
+            {
+                time: "04:25",
+                text: "Tere ishq ki mujhko.."
+            },
+            {
+                time: "04:34",
+                text: "Aadat hai o.. aadat hai.."
+            },
+            {
+                time: "04:43",
+                text: "Aadat hai o.. teri aadat hai.."
+            }
+        ]
+    }
+};
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -59,6 +175,10 @@ document.addEventListener("DOMContentLoaded", function () {
         audioPlayer.play(); // Start playing the new track
         playPauseButton.innerHTML = '<i class="fa-solid fa-pause fa-2xl"></i>';
         updateActivePlaylistItem(trackIndex);
+
+        // Update the lyrics based on the selected track
+        const lyrics = track.getAttribute("data-lyrics");
+        updateLyrics(lyrics);
     }
 
     // Function to toggle play/pause
@@ -106,6 +226,11 @@ document.addEventListener("DOMContentLoaded", function () {
             sliderScale.style.width = progress + "%";
             sliderCircle.style.left = progress + "%";
             currentTimeDisplay.textContent = formatTime(currentTime);
+
+            if (!isDraggingBar) {
+                const currentTime = audioPlayer.currentTime;
+                displayLyricsForTime("Aadat", currentTime); // Replace "Aadat" with the track name
+            }
         }
     });
 
@@ -201,6 +326,45 @@ document.addEventListener("DOMContentLoaded", function () {
             playlistDisplay.style.display = "none";
         }
     })
+
+    function updateLyricsForTime(currentTime) {
+        // Find the lyrics that correspond to the current time
+        const currentLyrics = findLyricsForTime(currentTime);
+
+        // Update the lyrics element
+        updateLyrics(currentLyrics);
+    }
+
+    function displayLyricsForTime(trackName, currentTime) {
+        const lyricsDataForTrack = lyricsData[trackName];
+        if (!lyricsDataForTrack) {
+            // Track not found in the lyrics data
+            return;
+        }
+    
+        const lyrics = lyrics;
+        let currentLyrics = "Lyrics not found";
+    
+        for (let i = 0; i < lyrics.length; i++) {
+            const line = lyrics[i];
+            if (line.time <= currentTime) {
+                currentLyrics = line.text;
+            } else {
+                break;
+            }
+        }
+    
+        // Update the lyrics element with the current lyrics
+        updateLyrics(currentLyrics);
+    }
+    
+
+    function updateLyrics(lyrics) {
+        // Update the lyrics element with the provided lyrics text
+        const lyricsElement = document.querySelector(".lyrics");
+        lyricsElement.textContent = lyrics;
+    }
+
 
     // Load and play the first track when the page loads
     loadTrack(currentTrack);

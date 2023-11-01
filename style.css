@@ -4,9 +4,9 @@
     --container-border-color: rgba(255, 255, 255, 0);
     --box-shadow-color: white;
     --playlist-border-color: rgba(255, 255, 255, 0);
-    --playlist-item-bg: rgba(255, 255, 255, 0.103);
+    --playlist-item-bg: rgba(255, 255, 255, 0.344);
     --playlist-item-hover-shadow: 0 0 5px black;
-    --active-bg-color: rgb(0, 0, 0);
+    --active-bg-color: rgb(231, 5, 5);
     --active-text-color: white;
     --lower-bg-color: rgba(165, 42, 42, 0);
     --progress-bg-color: rgba(255, 0, 0, 0);
@@ -26,7 +26,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   html,
@@ -35,17 +35,20 @@
     height: 100vh;
   }
 
-  .back{
-    width: 100vw;
-    height: 100vh;
+  #back{
+    pointer-events: all;
+    width: 100%;
+    height: 100%;
+    max-height: 821px;
   }
-  .back img{
+  #back img{
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
   
   .top {
+    pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -71,6 +74,7 @@
     height: 85%;
     background-color: var(--main-bg-color);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -80,20 +84,31 @@
     height: 90%;
     border: 2px solid var(--container-border-color);
   }
+
+  .lyrics{
+    color: white;
+    font-weight: bolder;
+    font-size: 50px;
+    text-shadow: 0 0 15px black;
+  }
   
   .playlist {
-    /* display: none; */
+    padding: 20px;
+    pointer-events: all;
+    display: none;
     border: 2px solid var(--playlist-border-color);
-    width: 90%;
+    width: 100%;
     overflow: auto;
     height: 95%;
-    box-shadow: inset 0px -10px 10px -1px rgba(129, 4, 157, 0.671);
+    /* box-shadow: inset 0px -10px 10px -1px rgba(129, 4, 157, 0.671); */
   }
   
   .playlist li {
+    font-weight: bolder;
     width: 100%;
     padding-left: 15px;
     font-size: 25px;
+    text-shadow: 0 0 15px white;
     list-style: none;
     cursor: pointer;
     background-color: var(--playlist-item-bg);
@@ -106,11 +121,29 @@
   
   .playlist li:hover {
     box-shadow: var(--playlist-item-hover-shadow);
+    scale: 1.03;
   }
   
   .active {
     background-color: var(--active-bg-color);
     color: var(--active-text-color);
+    scale: 1.03;
+    box-shadow: var(--playlist-item-hover-shadow);
+
+  }
+  .active::before{
+    content: "";
+    background-color: purple;
+    /* position: absolute; */
+    margin: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid white;
+  }
+  .active::after{
+    content: "🎶";
+    color: wheat;
   }
   
   .lower {
@@ -132,6 +165,7 @@
   }
   
   .progress-bar {
+    pointer-events: all;
     position: absolute;
     top: 50%;
     left: 46%;
@@ -150,6 +184,7 @@
   }
   
   .slider-scale {
+    pointer-events: all;
     width: 0%;
     height: 10px;
     background-color: var(--slider-scale-bg-color);
@@ -159,6 +194,7 @@
   }
   
   .slider-circle {
+    pointer-events: all;
     position: absolute;
     top: 50%;
     left: 0%;
@@ -182,6 +218,7 @@
   }
   
   .play-controls-btn {
+    pointer-events: all;
     width: 50px;
     height: 50px;
     background-color: var(--play-controls-btn-bg);
@@ -194,9 +231,9 @@
     cursor: pointer;
   }
   
-  .pre-song {}
+  /* .pre-song {}
   
-  .next-song {}
+  .next-song {} */
   
   .play-controls-btn:hover {
     box-shadow: none;
