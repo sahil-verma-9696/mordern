@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
     // Get references to various HTML elements
     const audioPlayer = document.querySelector(".audio-player");
@@ -87,18 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
     prevSongButton.addEventListener("click", prevTrack);
     loopButton.addEventListener("click", toggleLoop);
 
-    // Event listener to toggle play/pause
-    playPauseButton.addEventListener("touchstart", togglePlay);
-    nextSongButton.addEventListener("touchstart", nextTrack);
-    prevSongButton.addEventListener("touchstart", prevTrack);
-    loopButton.addEventListener("touchstart", toggleLoop);
-
     // Event listener for playlist items to load and play the selected track
     playlist.forEach((item, index) => {
-        item.addEventListener("touchstart", function () {
-            currentTrack = index;
-            loadTrack(currentTrack);
-        });
         item.addEventListener("click", function () {
             currentTrack = index;
             loadTrack(currentTrack);
@@ -176,13 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Event listner toggle playlist
-    playlistButton.addEventListener("touchstart", () => {
-        if (playlistDisplay.style.display === "none") {
-            playlistDisplay.style.display = "block";
-        } else {
-            playlistDisplay.style.display = "none";
-        }
-    })
     playlistButton.addEventListener("click", () => {
         if (playlistDisplay.style.display === "none") {
             playlistDisplay.style.display = "block";
@@ -218,9 +199,18 @@ document.addEventListener("DOMContentLoaded", function () {
     loadTrack(currentTrack);
 });
 
-Shery.imageEffect("#back", {
-    style: 5,
-    // debug: true,
-    config: { "a": { "value": 0.74, "range": [0, 30] }, "b": { "value": 0.75, "range": [-1, 1] }, "zindex": { "value": -9996999, "range": [-9999999, 9999999] }, "aspect": { "value": 1.8708891595615103 }, "gooey": { "value": true }, "infiniteGooey": { "value": true }, "growSize": { "value": 4, "range": [1, 15] }, "durationOut": { "value": 1, "range": [0.1, 5] }, "durationIn": { "value": 1.5, "range": [0.1, 5] }, "displaceAmount": { "value": 0.5 }, "masker": { "value": true }, "maskVal": { "value": 1.2, "range": [1, 5] }, "scrollType": { "value": 0 }, "geoVertex": { "range": [1, 64], "value": 1 }, "noEffectGooey": { "value": false }, "onMouse": { "value": 1 }, "noise_speed": { "value": 0.2, "range": [0, 10] }, "metaball": { "value": 0.2, "range": [0, 2] }, "discard_threshold": { "value": 0.5, "range": [0, 1] }, "antialias_threshold": { "value": 0, "range": [0, 0.1] }, "noise_height": { "value": 0.5, "range": [0, 2] }, "noise_scale": { "value": 5.79, "range": [0, 100] } },
-    gooey: true,
-});
+if (window.innerWidth <= 768) {
+    // Code for mobile devices (e.g., screen width is 768 pixels or less)
+    const imgs = document.querySelectorAll(".imgs");
+    imgs.forEach((elem) => {
+        elem.style.display = "none";
+    })
+} else {
+    // Code for other devices (e.g., desktop)
+    Shery.imageEffect("#back", {
+        style: 5,
+        // debug: true,
+        config: { "a": { "value": 0.74, "range": [0, 30] }, "b": { "value": 0.75, "range": [-1, 1] }, "zindex": { "value": -9996999, "range": [-9999999, 9999999] }, "aspect": { "value": 1.8708891595615103 }, "gooey": { "value": true }, "infiniteGooey": { "value": true }, "growSize": { "value": 4, "range": [1, 15] }, "durationOut": { "value": 1, "range": [0.1, 5] }, "durationIn": { "value": 1.5, "range": [0.1, 5] }, "displaceAmount": { "value": 0.5 }, "masker": { "value": true }, "maskVal": { "value": 1.2, "range": [1, 5] }, "scrollType": { "value": 0 }, "geoVertex": { "range": [1, 64], "value": 1 }, "noEffectGooey": { "value": false }, "onMouse": { "value": 1 }, "noise_speed": { "value": 0.2, "range": [0, 10] }, "metaball": { "value": 0.2, "range": [0, 2] }, "discard_threshold": { "value": 0.5, "range": [0, 1] }, "antialias_threshold": { "value": 0, "range": [0, 0.1] }, "noise_height": { "value": 0.5, "range": [0, 2] }, "noise_scale": { "value": 5.79, "range": [0, 100] } },
+        gooey: true,
+    });
+}
