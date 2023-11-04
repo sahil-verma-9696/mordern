@@ -1,9 +1,3 @@
-Shery.imageEffect("#back", {
-    style: 5,
-    // debug: true,
-    config: { "a": { "value": 0.74, "range": [0, 30] }, "b": { "value": 0.75, "range": [-1, 1] }, "zindex": { "value": -9996999, "range": [-9999999, 9999999] }, "aspect": { "value": 1.8708891595615103 }, "gooey": { "value": true }, "infiniteGooey": { "value": true }, "growSize": { "value": 4, "range": [1, 15] }, "durationOut": { "value": 1, "range": [0.1, 5] }, "durationIn": { "value": 1.5, "range": [0.1, 5] }, "displaceAmount": { "value": 0.5 }, "masker": { "value": true }, "maskVal": { "value": 1.2, "range": [1, 5] }, "scrollType": { "value": 0 }, "geoVertex": { "range": [1, 64], "value": 1 }, "noEffectGooey": { "value": false }, "onMouse": { "value": 1 }, "noise_speed": { "value": 0.2, "range": [0, 10] }, "metaball": { "value": 0.2, "range": [0, 2] }, "discard_threshold": { "value": 0.5, "range": [0, 1] }, "antialias_threshold": { "value": 0, "range": [0, 0.1] }, "noise_height": { "value": 0.5, "range": [0, 2] }, "noise_scale": { "value": 5.79, "range": [0, 100] } },
-    gooey: true,
-});
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -24,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize variables for the current track and drag state
     let currentTrack = 0;
     let isDraggingBar = false;
-    let isDraggingCircle = false;
+    // let isDraggingCircle = false;
 
     // Function to load a track by its index and start playing it
     function loadTrack(trackIndex) {
@@ -34,10 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
         audioPlayer.play(); // Start playing the new track
         playPauseButton.innerHTML = '<i class="fa-solid fa-pause fa-2xl"></i>';
         updateActivePlaylistItem(trackIndex);
-
-        // Update the lyrics based on the selected track
-        const lyrics = track.getAttribute("data-lyrics");
-        // updateLyrics(lyrics);
     }
 
     // Function to toggle play/pause
@@ -97,8 +87,18 @@ document.addEventListener("DOMContentLoaded", function () {
     prevSongButton.addEventListener("click", prevTrack);
     loopButton.addEventListener("click", toggleLoop);
 
+    // Event listener to toggle play/pause
+    playPauseButton.addEventListener("touchstart", togglePlay);
+    nextSongButton.addEventListener("touchstart", nextTrack);
+    prevSongButton.addEventListener("touchstart", prevTrack);
+    loopButton.addEventListener("touchstart", toggleLoop);
+
     // Event listener for playlist items to load and play the selected track
     playlist.forEach((item, index) => {
+        item.addEventListener("touchstart", function () {
+            currentTrack = index;
+            loadTrack(currentTrack);
+        });
         item.addEventListener("click", function () {
             currentTrack = index;
             loadTrack(currentTrack);
@@ -176,6 +176,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Event listner toggle playlist
+    playlistButton.addEventListener("touchstart", () => {
+        if (playlistDisplay.style.display === "none") {
+            playlistDisplay.style.display = "block";
+        } else {
+            playlistDisplay.style.display = "none";
+        }
+    })
     playlistButton.addEventListener("click", () => {
         if (playlistDisplay.style.display === "none") {
             playlistDisplay.style.display = "block";
@@ -193,10 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function findSubtitleForTime(currentTime) {
-        // Logic to find the appropriate subtitle based on currentTime
-        // You can search the subtitle data for the current track and time
-        // and return the corresponding subtitle text.
-        // Example: Iterate through the subtitle data array for the current track.
         const minutes = Math.floor(currentTime / 60);
         const seconds = Math.floor(currentTime % 60);
         const formattedTime = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -213,4 +216,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load and play the first track when the page loads
     loadTrack(currentTrack);
+});
+
+Shery.imageEffect("#back", {
+    style: 5,
+    // debug: true,
+    config: { "a": { "value": 0.74, "range": [0, 30] }, "b": { "value": 0.75, "range": [-1, 1] }, "zindex": { "value": -9996999, "range": [-9999999, 9999999] }, "aspect": { "value": 1.8708891595615103 }, "gooey": { "value": true }, "infiniteGooey": { "value": true }, "growSize": { "value": 4, "range": [1, 15] }, "durationOut": { "value": 1, "range": [0.1, 5] }, "durationIn": { "value": 1.5, "range": [0.1, 5] }, "displaceAmount": { "value": 0.5 }, "masker": { "value": true }, "maskVal": { "value": 1.2, "range": [1, 5] }, "scrollType": { "value": 0 }, "geoVertex": { "range": [1, 64], "value": 1 }, "noEffectGooey": { "value": false }, "onMouse": { "value": 1 }, "noise_speed": { "value": 0.2, "range": [0, 10] }, "metaball": { "value": 0.2, "range": [0, 2] }, "discard_threshold": { "value": 0.5, "range": [0, 1] }, "antialias_threshold": { "value": 0, "range": [0, 0.1] }, "noise_height": { "value": 0.5, "range": [0, 2] }, "noise_scale": { "value": 5.79, "range": [0, 100] } },
+    gooey: true,
 });
